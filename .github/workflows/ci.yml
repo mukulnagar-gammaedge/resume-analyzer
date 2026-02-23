@@ -26,5 +26,6 @@ jobs:
 
       - name: Build Docker images
         run: |
-          docker build -t resume_analyzer-fastapi -f Dockerfile .
-          docker build -t resume_analyzer-worker -f Dockerfile.worker .
+          # docker build -t resume_analyzer-fastapi -f Dockerfile .
+          # docker build -t resume_analyzer-worker -f Dockerfile.worker .
+          docker-compose -f docker-compose.yml build
