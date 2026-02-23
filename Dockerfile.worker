@@ -1,0 +1,28 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libglib2.0-0 \
+    libnss3 \
+    libx11-6 \
+    libxext6 \
+    libxrender1 \
+    libsm6 \
+    libice6 \
+    libfontconfig1 \
+    libfreetype6 \
+    libjpeg62-turbo \
+    zlib1g \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+RUN mkdir -p /app/uploads
+
+# IMPORTANT: must run from project root so imports work
+CMD ["celery", "-A", "app.core.celery_app.celery", "worker", "--loglevel=info"]
