@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches: ["main"]
-  pull_request:
+  # pull_request:
 
 jobs:
   ci:
@@ -26,9 +26,6 @@ jobs:
 
       - name: Build Docker images
         run: |
-          # docker build -t resume_analyzer-fastapi -f Dockerfile .
-          # docker build -t resume_analyzer-worker -f Dockerfile.worker .
-          # docker-compose -f build
           docker compose  up --build -d
       - name: check running continer
         run: 

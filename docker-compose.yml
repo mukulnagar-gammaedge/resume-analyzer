@@ -38,7 +38,7 @@ services:
       REDIS_URL: redis://redis:6379/0
       UPLOAD_DIR: /app/uploads
     ports:
-      - "8000:80"
+      - "8000:8000"
     volumes:
       - ./uploads:/app/uploads
     depends_on:
