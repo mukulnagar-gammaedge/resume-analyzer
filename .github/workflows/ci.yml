@@ -45,7 +45,7 @@ jobs:
       - name: Wait for App
         run: |
           echo "Waiting for FastAPI..."
-          sleep 15
+          sleep 2
 
       # # :seven: Health Check Test
       # - name: Test FastAPI
@@ -58,19 +58,19 @@ jobs:
           docker compose down
 
       # :nine: Tag Images with Commit SHA
-      - name: Tag Images
-        run: |
-          docker tag $FASTAPI_IMAGE:latest $FASTAPI_IMAGE:$IMAGE_TAG
-          docker tag $REDIS_IMAGE:latest $REDIS_IMAGE:$IMAGE_TAG
+      # - name: Tag Images
+      #   run: |
+      #     docker tag $FASTAPI_IMAGE:latest $FASTAPI_IMAGE:$IMAGE_TAG
+      #     docker tag $REDIS_IMAGE:latest $REDIS_IMAGE:$IMAGE_TAG
 
       # :keycap_ten: Push Latest Tags
       - name: Push Latest Images
         run: |
-          docker push $FASTAPI_IMAGE:latest
-          docker push $REDIS_IMAGE:latest
+          docker push mukulnagar25/fastapi-app:latest
+          docker push mukulnagar25/fastapi-worker:latest
 
       # :one::one: Push Versioned Tags
-      - name: Push Versioned Images
-        run: |
-          docker push $FASTAPI_IMAGE:$IMAGE_TAG
-          docker push $REDIS_IMAGE:$IMAGE_TAG
+      # - name: Push Versioned Images
+      #   run: |
+      #     docker push $FASTAPI_IMAGE:$IMAGE_TAG
+      #     docker push $REDIS_IMAGE:$IMAGE_TAG

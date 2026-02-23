@@ -29,7 +29,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ${FASTAPI_IMAGE}
+    image: mukulnagar25/fastapi-app:latest
     env_file:
       - .env
     environment:
@@ -52,7 +52,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.worker
-    image: ${REDIS_IMAGE}  
+    image: mukulnagar25/fastapi-worker:latest
     env_file:
       - .env
     environment:
