@@ -29,4 +29,7 @@ jobs:
           # docker build -t resume_analyzer-fastapi -f Dockerfile .
           # docker build -t resume_analyzer-worker -f Dockerfile.worker .
           # docker-compose -f build
-          docker compose -f docker-compose.yml up -d
+          docker compose  up --build -d
+      - name: check running continer
+        run: 
+          docker ps    
