@@ -27,6 +27,17 @@ jobs:
       - name: Build Docker images
         run: |
           docker compose  up --build -d
+
+      - name: verify fastapi
+        run: |
+          curl -f http://localhost:8000/docs 
+
+
       - name: check running continer
         run: 
           docker ps    
+
+      - name: check logs
+        if: failure()
+        run:
+          docker compose logs    
