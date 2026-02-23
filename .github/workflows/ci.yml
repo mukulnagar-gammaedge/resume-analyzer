@@ -30,7 +30,7 @@ jobs:
 
       - name: verify fastapi
         run: |
-          curl -f http://localhost:8000/docs 
+          uvicorn app.main:app --reload 
 
 
       - name: check running continer
