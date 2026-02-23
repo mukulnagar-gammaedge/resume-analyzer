@@ -29,6 +29,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: ${FASTAPI_IMAGE}
     env_file:
       - .env
     environment:
@@ -51,6 +52,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.worker
+    image: ${REDIS_IMAGE}  
     env_file:
       - .env
     environment:
